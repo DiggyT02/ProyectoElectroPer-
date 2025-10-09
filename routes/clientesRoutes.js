@@ -9,6 +9,6 @@ const clientesController = require('../controllers/clientesController')
 
 router.post('/', clientesController.crearCliente)
 
-//router.get('/', clientesController.obtenerCliente)
+router.get('/', clientesController.obtenerCliente)
 
 module.exports = router
