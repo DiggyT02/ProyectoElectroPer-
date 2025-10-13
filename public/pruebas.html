@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Libreria FontAwesoma -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+  
+  <div class="container" mt-3 text-center>
+    <button type="button" id="test0" class="btn btn-dark rounded-0"><i class="fa-solid fa-desktop"></i>UI Components native</button>
+    <button type="button" id="test1" class="btn btn-dark rounded-0"><i class="fa-regular fa-keyboard"></i>SW Básico</button>
+    <button type="button" id="test2" class="btn btn-dark rounded-0"><i class="fa-solid fa-square-binary"></i>SW Pregunta</button>
+    <button type="button" id="test3" class="btn btn-dark rounded-0"><i class="fa-brands fa-windows"></i>SW Notificación</button>
+
+
+    <button type="button" id="test4" data-bs-toggle="modal" data-bs-target="#modal-test-1" class="btn btn-dark rounded-0"><i class="fa-brands fa-ubuntu"></i>Test 4</button>
+    <button type="button" id="test5" class="btn btn-dark rounded-0"><i class="fa-brands fa-suse" ></i>Test 5</button>
+
+    <!-- Confetti -->
+     <button type="button" id="test6" class="btn btn-dark rounded-0"><i class="fa-brands fa-dribbble"></i>Confetti</button>
+  </div>
+<!-- Zona -->
+
+  <div class="modal" tabindex="-1" id="modal-test-1" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Super Androide 17</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="images/Img-prueba.jpg" alt="Super Androide 17" style="max-width: 100%;">
+        <p>Super Androide 17 es la fusión de los Androides 17 de la Tierra y el Infierno, resultando en un guerrero más alto y poderoso. Su apariencia combina rasgos de ambos con cabello más largo, ropa azul oscuro, un cinturón con el logo del Listón Rojo y botas. Es capaz de absorber energía para aumentar su poder, similar o más fuerte que el Super Saiyan 4 Goku, y posee ataques como el Bombardero Flash y la Tormenta del Infierno. </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Zona -->
+
+  <!-- Zona -->
+
+    <div class="modal" tabindex="-1" id="modal-test-2" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Insertando video en un modal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <iframe id="youtubeVideo" width="100%" height="315" src="https://www.youtube.com/embed/EMYKTv_yzEk?si=FKVG6XeeaR-pUuWO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Zona -->
+
+  <!-- Libreria para confetti -->
+ <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+
+<script>
+  const b0 = document.getElementById('test0')// Funciones UI user nativo
+  const b1 = document.getElementById('test1')
+  const b2 = document.getElementById('test2')
+  const b3 = document.getElementById('test3')
+  const b4 = document.getElementById('test4') //Modal bootstrap
+  const b5 = document.getElementById('test5') //Modal bootstrap
+  const b6 = document.getElementById('test6') //Modal bootstrap
+  //const b5 = new bootstrap.Modal(document.getElementById('test5'), options)
+
+  // b0.addEventListener("click", () => {
+    //alert("")
+    /*if (confirm("¿Está seguro de continuar?")){
+      console.log("Confirmado")
+    }
+    
+
+   const nombre = prompt("Escribe tu nombre")
+   console.log( Hola ${nombre}´)
+  })
+    */ 
+  b1.addEventListener("click", () => {
+    //Sweet Alert ... "Alertas de ensueño"
+    Swal.fire({
+      title: "SENATI",
+      text: "Hola mundo"
+    });
+  });
+
+  b2.addEventListener("click", () => {
+    Swal.fire({
+      title: "App Cobranza",
+      text: "¿Seguro confirmar el pago?",
+      showCancelButton : true,
+      icon: 'question',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar',
+      footer: 'SENATI - 2025'
+    })
+  })
+
+  b3.addEventListener("click", () => {
+    Swal.fire({
+      title: 'Guardado correctamente',
+      toast :'true',
+      showConfirmButton: false,
+      position:'top-end',
+      timer: 2000,
+      timerProgressBar: true
+    })
+  })
+
+  b5.addEventListener("click", () => {
+
+    const modal = new bootstrap.Modal('#modal-test-2')
+    modal.toggle()
+    
+  })
+
+  function showConfettiBasic(){
+    confetti ({
+     particleCount: 400,
+     spread: 70,
+     origin: { y: 0}
+    })
+  }
+
+  b6.addEventListener("click", () => {
+    showConfettiBasic();
+  })
+
+  
+  
+</script>
+
+</body>
+</html>
