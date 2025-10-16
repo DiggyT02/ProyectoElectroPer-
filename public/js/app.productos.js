@@ -25,7 +25,7 @@ async function obtenerProductos(){
   //Reiniciamos el contenido de la tabla
   tabla.innerHTML = '';
   
-  productos.forEach(producto => {
+    productos.forEach(producto => {
     //Crear una nueva fila y celdas con los datos contenidos en JSON
     const row = tabla.insertRow() //<tr></tr>
 

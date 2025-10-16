@@ -29,7 +29,10 @@ fs.mkdir(uploadDir, { recursive: true  })
 
 //Actualización:
 //Servir los documentos HTML, CSS, JS
+app.use(express.json())
+
 app.use(express.static(path.join(__dirname, 'public')))
+
 //Gestion de archivos
 app.use(express.urlencoded({extended: true}))
 
@@ -54,8 +57,15 @@ app.get('/tiendas', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'tiendas.html'))
 })
 
+// ***Rutas para el módulo de PERSONAS ***
 app.get('/personas', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'personas.html'))
+  res.sendFile(path.join(__dirname, 'public', 'personas/listar.html'))
+})
+app.get('/personas/crear', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'personas/crear.html'))
+})
+app.get('/personas/editar', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'personas/editar.html'))
 })
 
 //Comunicación se realizará JSON

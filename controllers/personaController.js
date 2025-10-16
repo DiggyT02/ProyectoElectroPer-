@@ -22,8 +22,9 @@ const crear = async (req, res) => {
       //1. Recibir los datos del formulario(texto)
       const {apellidos, nombres, dni, telefono } = req.body
       //2.Recibir la fotografía
-      const fotografia = req.file ? `/uploads/${req.file.filename}` : null;
-
+      //const fotografia = req.file ? `/uploads/${req.file.filename}` : null;
+      const fotografia ='nuevafoto.jpg'
+      
       //3. Validación
 
       //4. Guardar nuevo registro
@@ -35,9 +36,19 @@ const crear = async (req, res) => {
           message: 'Registro correcto'
         })
   }catch (e){
-    console.error(e)
+    //console.error(e)
+    if (e.code === "ER_DUP_ENTRY") {
+      return res.status(400).json({error: 'DNI está duplicado'})
+    }
 
+    res.status(500).json({error: 'Error en el proceso de registro'})
   }
+}
+
+const crearTest = async(req, res) => {
+  res.status(201).json({
+    test: "correcto"
+  })
 }
 
 const actualizar = async (req, res) => {
@@ -51,6 +62,7 @@ const eliminar = async (req, res) => {
 module.exports = {
   obtenerTodas,
   crear,
+  crearTest,
   actualizar,
   eliminar
 }
