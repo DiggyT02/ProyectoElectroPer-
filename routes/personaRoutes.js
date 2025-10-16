@@ -4,7 +4,7 @@ const personaController = require('../controllers/personaController')
 const {upload} = require('../middleware')
 
 //LEER
-router.gert('/', personaController.obtenerTodas)
+router.get('/', personaController.obtenerTodas)
 
 //CREAR --> BINARIO
 //fotografia = name (frontend)

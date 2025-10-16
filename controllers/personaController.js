@@ -13,7 +13,6 @@ const obtenerTodas = async (req,res) => {
   }
 }
 
-
 //req => require (petici+n/solicitud)
 //req.params  : parámetro URL
 //req.body    : parámetro JSON
