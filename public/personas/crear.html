@@ -17,22 +17,23 @@
           <a href="http://localhost:3000/personas">Mostrar lista</a>
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-3">
         <div class="col-md-12">
-          <form action="" id="formulario-registro" autocomplete="off"">
+          <!-- Permitir la subida de archivos - multipart -->
+          <form action="" id="formulario-registro" enctype="multipart/form-data" autocomplete="off"">
             <div class="card">
               <div class="card-header"><strong>Completa el formulario</strong></div>
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-floating">
-                      <input type="text" class="form-control" placeholder="Apellidos" id="apellidos">
+                      <input type="text" class="form-control" placeholder="Apellidos" id="apellidos" maxlength="40" required>
                       <label for="apellidos" class="form-label">Apellidos</label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-floating">
-                      <input type="text" class="form-control" placeholder="Nombres" id="nombres">
+                      <input type="text" class="form-control" placeholder="Nombres" id="nombres" maxlength="40" required>
                       <label for="nombres" class="form-label">Nombres</label>
                     </div>
                   </div>
@@ -40,19 +41,19 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-floating">
-                      <input type="text" class="form-control" placeholder="DNI" id="dni">
+                      <input type="text" class="form-control" placeholder="DNI" pattern="[0-9]*" title="Solo se permiten números" id="dni" minlength="8" maxlength="8" required>
                       <label for="dni" class="form-label">DNI</label>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-floating">
-                      <input type="text" class="form-control" placeholder="Telefono" id="telefono">
+                      <input type="text" class="form-control" placeholder="Telefono" id="telefono" minlength="9" maxlength="9" required>
                       <label for="telefono" class="form-label">Telefono</label>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-12 mt-2">
-                  <input type="file">
+                  <input type="file" class="form-control rounded-0" id="fotografia" accept=".jpg,.jpeg,.png,.GIF" required>
                 </div>
               </div>
               <div class="card-footer">
@@ -77,8 +78,9 @@
       const telefono = document.getElementById("telefono")
 
     
-    
+    //Esta funcion permite guardar datos del formulario sin adjuntar binarios
     async function crearCliente() {
+      
       const data = {
         apellidos  : apellidos.value,
         nombres    : nombres.value,
@@ -86,7 +88,9 @@
         telefono   : telefono.value,
         fotografia : "foto.jpg" 
       }
+
       
+      //Enviaremos un arcvhivo binario (PDF, DOC, JPG, PNG, MP4, MP3, etc)
       const response = await fetch(API_URL, {
         method: 'post',
         headers: {"Content-Type": "application/json"},
@@ -96,12 +100,37 @@
       const result = await response.json();
       console.log(result)
     }
-    
-    formulario.addEventListener("submit", (event) => {
-      event.preventDefault()
 
+        async function guardarDatosBinario(){
+        const formData = new FormData()
+
+        formData.append('apellidos', apellidos.value)
+        formData.append('nombres', nombres.value)
+        formData.append('dni', dni.value)
+        formData.append('telefono', telefono.value)
+
+        //Campo que envia el archivo
+        formData.append('fotografia', document.querySelector("#fotografia").files[0])
+
+        //Peticion fetch para enviar el formulario con archivo
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          body: formData
+        })
+
+        //Evaluamos resultado
+        const result = await response.json()
+        console.log(result)
+        
+      }
     
-    Swal.fire({
+      
+      formulario.addEventListener("submit", (event) => {
+        event.preventDefault()
+        
+        
+        
+        Swal.fire({
         icon: 'question',
         title: "¿Está seguro que desea agregar al cliente?",
         showDenyButton: true,
@@ -112,7 +141,7 @@
         footer: 'SENATI - 2025'
     }).then((result) => {
         if (result.isConfirmed) {
-            crearCliente();
+            guardarDatosBinario();//!Actualizado¡¡
         }
     })
 })//submit

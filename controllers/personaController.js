@@ -22,8 +22,8 @@ const crear = async (req, res) => {
       //1. Recibir los datos del formulario(texto)
       const {apellidos, nombres, dni, telefono } = req.body
       //2.Recibir la fotografía
-      //const fotografia = req.file ? `/uploads/${req.file.filename}` : null;
-      const fotografia ='nuevafoto.jpg'
+      const fotografia = req.file ? `/uploads/${req.file.filename}` : null;
+      //const fotografia ='nuevafoto.jpg'
       
       //3. Validación
 
